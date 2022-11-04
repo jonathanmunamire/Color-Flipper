@@ -1,14 +1,20 @@
 import _ from 'lodash';
 import './style.css';
 
+const color = document.querySelector('.color');
+const button = document.querySelector('.btn');
 
-function component() {
-    const element = document.createElement('div');
+const Colors = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
 
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-    element.classList.add('hello');
-  
-    return element;
+button.addEventListener('click', ()=>{
+  let hex = '#'
+  for( let i = 0; i < 6; i++){
+    hex += Colors[getRandomNumber()];
   }
-  
-  document.body.appendChild(component());
+  color.textContent = hex;
+  document.body.style.backgroundColor = hex;
+})
+
+function getRandomNumber(){
+  return Math.floor(Math.random() * Colors.length)
+}
